@@ -48,6 +48,6 @@ public class Main {
         long hours = tempDateTime.until(newYear, ChronoUnit.HOURS );
         tempDateTime = tempDateTime.plusHours( hours );
         long minutes = tempDateTime.until(newYear, ChronoUnit.MINUTES );
-        return String.format("Time for new 2021 year: %s days %s hours %s minutes!\n", days, hours, minutes);
+        return String.format("Time for new 2021 year: %s days %s hours %s minutes !\n", days, hours, minutes);
     }
 }
