@@ -16,8 +16,6 @@ public class Main {
         createServer();
     }
 
-    public HttpServer server;
-
     static class MyHandler implements HttpHandler {
         public void handle(HttpExchange t) throws IOException {
             String response = timeForNewYear();
@@ -45,16 +43,11 @@ public class Main {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime newYear = LocalDateTime.of(2021, 1, 1, 0, 0);
         LocalDateTime tempDateTime = LocalDateTime.from(now);
-
         long days = tempDateTime.until(newYear, ChronoUnit.DAYS );
         tempDateTime = tempDateTime.plusDays( days );
-
         long hours = tempDateTime.until(newYear, ChronoUnit.HOURS );
         tempDateTime = tempDateTime.plusHours( hours );
-
         long minutes = tempDateTime.until(newYear, ChronoUnit.MINUTES );
-        tempDateTime = tempDateTime.plusMinutes( minutes );
-
-        return String.format("Time for new 2021 year: %s days %s hours %s minutes!", days, hours, minutes);
+        return String.format("Time for new 2021 year: %s days %s hours %s minutes!\n", days, hours, minutes);
     }
 }
