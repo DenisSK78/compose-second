@@ -1,14 +1,14 @@
 version: '3.3'
 services:
   web:
-    image: denis78/compose-main
+    image: denis78/compose-main:latest
     ports:
       - "9000:9000"
   sonarr:
-    image: denis78/compose-first
+    image: denis78/compose-first:latest
     ports:
       - "9001:9001"
   radarr:
-    image: denis78/compose-second
+    image: denis78/compose-second:latest
     ports:
       - "9002:9002"

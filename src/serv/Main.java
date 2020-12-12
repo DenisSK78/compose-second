@@ -37,9 +37,9 @@ public class Main {
         server.start();
     }
 
-    private static final String FIRST_LINK = "<p><a onclick='goTo(1)'>Open first link 9001</a></p>";
-    private static final String SECOND_LINK = "<p><a onclick='goTo(2)'>Open second link 9002</a></p>";
-    private static final String MAIN_LINK = "<p><a onclick='goTo(0)'>Open main link 9000</a></p>";
+    private static final String FIRST_LINK = "<p><a href='#' onclick='goTo(1)'>Open first link 9001</a></p>";
+    private static final String SECOND_LINK = "<p><a href='#' onclick='goTo(2)'>Open second link 9002</a></p>";
+    private static final String MAIN_LINK = "<p><a href='#' onclick='goTo(0)'>Open main link 9000</a></p>";
 
     private static final String LINK_BODY = "<!DOCTYPE HTML >\n" +
             "<html lang='html'>\n" +
@@ -48,7 +48,7 @@ public class Main {
             "    <title>Links</title>\n" +
             "</head>\n" +
             "<body>\n" +
-            "<h2>Links: </h2>\n" +
+            "<h2>Main page links: </h2>\n" +
             "%s\n" +
             "%s\n" +
             "</body>\n" +
