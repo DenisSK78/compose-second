@@ -16,7 +16,7 @@ public class Main {
 
     static class MyHandler implements HttpHandler {
         public void handle(HttpExchange t) throws IOException {
-            String response = String.format(LINK_BODY, FIRST_LINK, SECOND_LINK);
+            String response = String.format(LINK_BODY, FIRST_LINK, MAIN_LINK);
             t.sendResponseHeaders(200, response.length());
             OutputStream os = t.getResponseBody();
             os.write(response.getBytes());
@@ -27,7 +27,7 @@ public class Main {
     private static void createServer(){
         HttpServer server = null;
         try {
-            server = HttpServer.create(new InetSocketAddress(9000), 0);
+            server = HttpServer.create(new InetSocketAddress(9002), 0);
         } catch (IOException e) {
             e.printStackTrace();
         }
