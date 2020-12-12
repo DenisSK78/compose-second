@@ -7,8 +7,6 @@ import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 
 public class Main {
 
@@ -18,7 +16,7 @@ public class Main {
 
     static class MyHandler implements HttpHandler {
         public void handle(HttpExchange t) throws IOException {
-            String response = timeForNewYear();
+            String response = String.format(LINK_BODY, FIRST_LINK, SECOND_LINK);
             t.sendResponseHeaders(200, response.length());
             OutputStream os = t.getResponseBody();
             os.write(response.getBytes());
@@ -39,15 +37,36 @@ public class Main {
         server.start();
     }
 
-    private static String timeForNewYear() {
-        LocalDateTime now = LocalDateTime.now();
-        LocalDateTime newYear = LocalDateTime.of(2021, 1, 1, 0, 0);
-        LocalDateTime tempDateTime = LocalDateTime.from(now);
-        long days = tempDateTime.until(newYear, ChronoUnit.DAYS );
-        tempDateTime = tempDateTime.plusDays( days );
-        long hours = tempDateTime.until(newYear, ChronoUnit.HOURS );
-        tempDateTime = tempDateTime.plusHours( hours );
-        long minutes = tempDateTime.until(newYear, ChronoUnit.MINUTES );
-        return String.format("Time for new 2021 year: %s days %s hours %s minutes!\n", days, hours, minutes);
-    }
+    private static final String FIRST_LINK = "<p><a href='#' onclick='goTo(1)'>Open first link 9001</a></p>";
+    private static final String SECOND_LINK = "<p><a href='' onclick='goTo(2)'>Open second link 9002</a></p>";
+    private static final String MAIN_LINK = "<p><a href='' onclick='goTo(0)'>Open main link 9000</a></p>";
+
+    private static final String LINK_BODY = "<!DOCTYPE HTML >\n" +
+            "<html lang='html'>\n" +
+            "<head>\n" +
+            "    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>\n" +
+            "    <title>Links</title>\n" +
+            "</head>\n" +
+            "<body>\n" +
+            "<h2>Links: </h2>\n" +
+            "%s\n" +
+            "%s\n" +
+            "</body>\n" +
+            "<script>\n" +
+            "    function goTo(page){\n" +
+            "        switch (page) {\n" +
+            "            case 1 :\n" +
+            "                window.location.replace('http://localhost:9001/');\n" +
+            "                break;\n" +
+            "            case 2 :\n" +
+            "                window.location.replace('http://localhost:9002/');\n" +
+            "                break;\n" +
+            "            case 0 :\n" +
+            "                window.location.replace('http://localhost:9000/');\n" +
+            "                break;\n" +
+            "            default: console.log(\"Exception !!!\")\n" +
+            "        }\n" +
+            "    }\n" +
+            "</script>\n" +
+            "</html>";
 }
