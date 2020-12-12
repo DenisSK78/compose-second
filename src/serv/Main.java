@@ -37,7 +37,7 @@ public class Main {
         server.start();
     }
 
-    private static final String FIRST_LINK = "<p><a href='#' onclick='goTo(1)'>Open first link 9001</a></p>";
+    private static final String FIRST_LINK = "<p><a href='' onclick='goTo(1)'>Open first link 9001</a></p>";
     private static final String SECOND_LINK = "<p><a href='' onclick='goTo(2)'>Open second link 9002</a></p>";
     private static final String MAIN_LINK = "<p><a href='' onclick='goTo(0)'>Open main link 9000</a></p>";
 
