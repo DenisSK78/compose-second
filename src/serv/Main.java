@@ -16,7 +16,7 @@ public class Main {
 
     static class MyHandler implements HttpHandler {
         public void handle(HttpExchange t) throws IOException {
-            String response = String.format(LINK_BODY, SECOND_LINK, MAIN_LINK);
+            String response = String.format(LINK_BODY, FIRST_LINK, MAIN_LINK);
             t.sendResponseHeaders(200, response.length());
             OutputStream os = t.getResponseBody();
             os.write(response.getBytes());
@@ -48,7 +48,7 @@ public class Main {
             "    <title>Links</title>\n" +
             "</head>\n" +
             "<body>\n" +
-            "<h2>First page links: </h2>\n" +
+            "<h2>Second page links: </h2>\n" +
             "%s\n" +
             "%s\n" +
             "</body>\n" +
