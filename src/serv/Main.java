@@ -36,9 +36,9 @@ public class Main {
         server.setExecutor(null);
         server.start();
     }
-
-    private static final String FIRST_LINK = "<p><a href='#' onclick='goTo(1)'>Open first link 9001</a></p>";
-    private static final String MAIN_LINK = "<p><a href='#' onclick='goTo(0)'>Open main link 9000</a></p>";
+    private static final String FIRST_LINK = "<p><a href='#' onclick='goTo(1)'>Open SONAR</a></p>";
+    private static final String SECOND_LINK = "<p><a href='#' onclick='goTo(2)'>Open RADAR</a></p>";
+    private static final String MAIN_LINK = "<p><a href='#' onclick='goTo(0)'>Open MAIN</a></p>";
 
     private static final String LINK_BODY = "<!DOCTYPE HTML >\n" +
             "<html lang='html'>\n" +
@@ -55,13 +55,13 @@ public class Main {
             "    function goTo(page){\n" +
             "        switch (page) {\n" +
             "            case 1 :\n" +
-            "                window.location.replace('http://localhost:9001/');\n" +
+            "                window.location.replace('http://mycluster.k8s-9.sa/sonar');\n" +
             "                break;\n" +
             "            case 2 :\n" +
-            "                window.location.replace('http://localhost:9002/');\n" +
+            "                window.location.replace('http://mycluster.k8s-9.sa/radar');\n" +
             "                break;\n" +
             "            case 0 :\n" +
-            "                window.location.replace('http://localhost:9000/');\n" +
+            "                window.location.replace('http://mycluster.k8s-9.sa/');\n" +
             "                break;\n" +
             "            default: console.log(\"Exception !!!\")\n" +
             "        }\n" +
